@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 
+from schemas import Blog
+
 app = FastAPI()
 
 
-@app.get("/")
-def index():
-    return {"data": "index page"}
+@app.post("/")
+def index(request: Blog):
+    return request
