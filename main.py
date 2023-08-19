@@ -43,3 +43,16 @@ def getOne(id, response: Response, db: Session = Depends(get_db)):
         # response.status_code = status.HTTP_404_NOT_FOUND
         # return {'detail': f'Blog with id {id} is not found in db'}
     return blog
+
+
+@app.delete("/blog/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def deleteOne(id, db: Session = Depends(get_db)):
+    blog = db.query(models.Blog).filter(models.Blog.id == id).first()
+    if not blog:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Blog with id {id} is not found in db",
+        )
+    db.query(models.Blog).filter(models.Blog.id == id).delete(synchronize_session=False)
+    db.commit()
+    return {"detail": "Done!!"}
