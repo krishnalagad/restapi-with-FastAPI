@@ -28,9 +28,9 @@ async def create(user: User):
 @router.put("/{id}")
 async def update(id: int, user: User):
     conn.execute(
-        users.update(name=user.name, email=user.email, password=user.password).where(
-            users.c.id == id
-        )
+        users.update()
+        .values(name=user.name, email=user.email, password=user.password)
+        .where(users.c.id == id)
     )
     return conn.execute(users.select()).fetchall()
 
