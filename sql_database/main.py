@@ -5,7 +5,7 @@ from sql_database.models.user import users
 from sql_database.config.db import database
 
 
-app = FastAPI(tags=["User"], prefix="/user")
+app = FastAPI()
 
 
 @app.post("/")
