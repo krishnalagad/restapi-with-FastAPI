@@ -7,3 +7,5 @@ python-jose
 python-multipart
 pymysql
 alembic
+databases[mysql]
+mysql-connector-python
