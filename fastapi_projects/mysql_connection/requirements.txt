@@ -1,0 +1,4 @@
+virtualenv
+uvicorn
+sqlalchemy
+fastapi
