@@ -2,3 +2,4 @@ virtualenv
 uvicorn
 sqlalchemy
 fastapi
+pymysql
